@@ -6,6 +6,8 @@ import Image from "next/image"
 import SideMenuDesktop from "@/components/SideMenuDesktop"
 import SideMenuMobile from "@/components/SideMenuMobile"
 import ScrollIndicator from "@/components/ScrollIndicator"
+import HeroSlider from "@/components/HeroSlider"
+
 
 export default function Home() {
   const [menuVisible, setMenuVisible] = useState(false)
@@ -15,28 +17,18 @@ export default function Home() {
       <IntroAnimation onFinish={() => setMenuVisible(true)} />
 
       <section className="relative h-screen w-full overflow-hidden">
-        {/* Hero Desktop */}
+        <HeroSlider />
+
+        <ScrollIndicator />
+
+        {/* Desktop */}
         <div className="hidden md:block">
-          <Image
-            src="/hero.jpg"
-            alt="Arquitetura Pajaro"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <SideMenuDesktop visible={menuVisible} />
         </div>
 
-        {/* Hero Mobile */}
+        {/* Mobile */}
         <div className="md:hidden">
-          <Image
-            src="/hero-mobile.jpg"
-            alt="Arquitetura Pajaro Mobile"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <SideMenuMobile />
         </div>
 
         {/* Scroll indicator */}
